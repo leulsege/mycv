@@ -14,6 +14,7 @@ export class UsersService {
   }
 
   async findOne(id: number): Promise<User> {
+    if (!id) null;
     const user = await this.ripo.findOne({ where: { id } });
     if (!user) {
       throw new NotFoundException('user not found');
